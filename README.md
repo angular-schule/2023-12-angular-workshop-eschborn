@@ -84,7 +84,7 @@ Bitte installiere das Übungsprojekt schon vor Beginn des Workshops.
 
 Du kannst dir entweder  
 * dieses Repository per Git herunterladen und in den Ordner `book-rating` wechseln<br>**oder**<br>  
-* den Code als ZIP-Datei herunterladen: [book-rating.zip](XXX)
+* den Code als ZIP-Datei herunterladen: [book-rating.zip](https://github.com/angular-schule/2023-12-angular-workshop-eschborn/files/13558624/book-rating.zip)
 
 > ⚠️ Bitte installiere das Projekt nicht auf einem Netzlaufwerk, sondern direkt auf der lokalen Festplatte!
 
