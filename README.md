@@ -100,10 +100,6 @@ Warte beim Schritt `Installing packages (npm)` mit Geduld ab!
 
 > Auf http://localhost:4200 sollte nun eine Website mit der Überschrift *"Book Rating"* erscheinen!
 
-<br>
-
-![Screenshot CLI](https://assets.angular.schule/simple_book-rating_screenshot.png)
-
 Beende danach den laufenden Webserver mit Strg + C.
 
 
