@@ -1,7 +1,7 @@
 <div class="card mb-4" *ngIf="book">
   <div class="card-body bg-light">
     <img class="img-thumbnail float-end"
-      src="//api.angular.schule/avatar/{{ book.rating }}">
+      src="//api.angular.schule/avatar/{{ book.rating }}" alt="">
     <div class="card-title">
       <h2>
         {{ book.title }}
@@ -11,7 +11,20 @@
     <p>{{ book.description }}</p>
     <p>Preis: {{ book.price | currency:'EUR' }}</p>
 
-    <button [disabled]="book.rating <= 1" class="btn btn-primary me-2" (click)="doRateDown()">-1</button>
-    <button [disabled]="book.rating >= 5" class="btn btn-primary"      (click)="doRateUp()">+1</button>
+    <!-- <button [disabled]="book.rating <= 1" class="btn btn-primary me-2" (click)="doRateDown()">-1</button>
+    <button [disabled]="book.rating >= 5" class="btn btn-primary"      (click)="doRateUp()">+1</button> -->
+
+    <!-- Worst practice!
+
+      1. Logik im Template
+      2. Separation of Concerns nicht beachtet
+      3. Objekt mutiert
+
+
+    -->
+
+    <button [disabled]="book.rating <= 1" class="btn btn-primary me-2" (click)="book.rating = book.rating - 1">-1</button>
+    <button [disabled]="book.rating >= 5" class="btn btn-primary"      (click)="book.rating = book.rating + 1">+1</button>
+
 </div>
 </div>
