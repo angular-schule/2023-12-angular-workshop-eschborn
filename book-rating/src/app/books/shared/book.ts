@@ -5,3 +5,4 @@ export interface Book {
   price: number;
   rating: number;
 }
+
