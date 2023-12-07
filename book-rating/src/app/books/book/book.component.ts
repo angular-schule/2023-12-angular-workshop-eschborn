@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from '../shared/book';
-import { NgIf, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
     selector: 'app-book',
     standalone: true,
     templateUrl: './book.component.html',
     styleUrls: ['./book.component.scss'],
-    imports: [NgIf, CurrencyPipe],
+    imports: [CurrencyPipe],
     changeDetection: ChangeDetectionStrategy.OnPush // hier save!
 })
 export class BookComponent {

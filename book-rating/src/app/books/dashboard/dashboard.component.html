@@ -1,12 +1,16 @@
+@for (b of books; track b) {
 <app-book
-  *ngFor="let b of books"
+ 
   (rateUp)="doRateUp($event)"
   (rateDown)="doRateDown($event)"
   [book]="b"></app-book>
+}
 
-<div *ngIf="books.length === 0">
+@if (books.length === 0) {
+<div>
   Keine Bücher vorhanden
 </div>
+}
 
 
 <p>

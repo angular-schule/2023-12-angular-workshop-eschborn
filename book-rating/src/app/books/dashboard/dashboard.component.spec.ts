@@ -4,7 +4,7 @@ import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { DashboardComponent } from './dashboard.component';
 import { Component, Input, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NgFor } from '@angular/common';
+
 import { BookComponent } from '../book/book.component';
 
 

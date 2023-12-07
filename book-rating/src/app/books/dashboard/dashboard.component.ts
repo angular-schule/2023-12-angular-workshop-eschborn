@@ -3,14 +3,14 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookComponent } from '../book/book.component';
-import { NgFor, NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    imports: [NgFor, BookComponent, NgIf],
+    imports: [BookComponent],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
