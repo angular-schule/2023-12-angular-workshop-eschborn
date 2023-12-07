@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Book } from '../shared/book';
@@ -11,6 +11,8 @@ import { Book } from '../shared/book';
   styleUrl: './book-create.component.scss'
 })
 export class BookCreateComponent {
+
+  @Output() create = new EventEmitter<Book>();
 
   bookForm = new FormGroup({
 
