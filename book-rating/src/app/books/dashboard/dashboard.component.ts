@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookComponent } from '../book/book.component';
+import { BookCreateComponent } from '../book-create/book-create.component';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { BookComponent } from '../book/book.component';
     standalone: true,
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    imports: [BookComponent],
+    imports: [BookComponent, BookCreateComponent],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
@@ -43,10 +44,10 @@ export class DashboardComponent {
       }
     ];
 
-    setTimeout(() => {
-      this.books = [];
-      // cd.detectChanges();
-    }, 3000);
+    // setTimeout(() => {
+    //   this.books = [];
+    //   // cd.detectChanges();
+    // }, 3000);
   }
 
   doRateUp(book: Book) {
