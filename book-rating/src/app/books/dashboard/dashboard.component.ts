@@ -4,6 +4,7 @@ import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookComponent } from '../book/book.component';
 import { BookCreateComponent } from '../book-create/book-create.component';
+import { BookStoreService } from '../shared/book-store.service';
 
 
 @Component({
@@ -12,42 +13,16 @@ import { BookCreateComponent } from '../book-create/book-create.component';
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
     imports: [BookComponent, BookCreateComponent],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
   books: Book[] = [];
 
   rs = inject(BookRatingService);
+  bs = inject(BookStoreService);
 
-  constructor(/*cd: ChangeDetectorRef*/) {
-    this.books = [
-      {
-        isbn: '123',
-        title: 'Angular',
-        description: 'Grundlagen und mehr',
-        price: 36.9,
-        rating: 5
-      },
-      {
-        isbn: '456',
-        title: 'Vue.js',
-        description: 'Das grüne Framework',
-        price: 32.9,
-        rating: 3
-      },
-      {
-        isbn: '112',
-        title: 'jQuery',
-        description: 'Alt!!!',
-        price: 1,
-        rating: 1
-      }
-    ];
-
-    // setTimeout(() => {
-    //   this.books = [];
-    //   // cd.detectChanges();
-    // }, 3000);
+  constructor() {
+    this.bs.getAllBooks().subscribe(books => this.books = books);
   }
 
   doRateUp(book: Book) {
