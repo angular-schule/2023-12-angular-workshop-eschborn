@@ -1,15 +1,15 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subject, BehaviorSubject, ReplaySubject, Observable, share, takeUntil } from 'rxjs';
+import { Subject, BehaviorSubject, ReplaySubject, Observable, share, takeUntil, shareReplay } from 'rxjs';
 
 import { MeasureValuesService } from './measure-values.service';
 import { ExerciseService } from '../exercise.service';
 import { HistoryComponent } from '../../shared/history/history.component';
-import { NgFor, AsyncPipe, DecimalPipe } from '@angular/common';
+import { NgFor, AsyncPipe, DecimalPipe, JsonPipe } from '@angular/common';
 
 @Component({
   templateUrl: './multicast.component.html',
   standalone: true,
-  imports: [NgFor, HistoryComponent, AsyncPipe, DecimalPipe]
+  imports: [NgFor, HistoryComponent, AsyncPipe, DecimalPipe, JsonPipe]
 })
 export class MulticastComponent implements OnDestroy {
 
@@ -17,11 +17,30 @@ export class MulticastComponent implements OnDestroy {
   logStream$ = new ReplaySubject<string>();
   private destroy$ = new Subject<void>();
 
-  measureValues$: Observable<number>; // später: Subject<number>;
+  measureValues$: Subject<number>; // später: Subject<number>;
 
   constructor(private mvs: MeasureValuesService, private es: ExerciseService) {
     /**************!!**************/
-    this.measureValues$ = this.mvs.getValues();
+
+    // 1. unchanged stream (cold)
+    // this.measureValues$ = this.mvs.getValues();
+
+    // 2. mutilcasts (shares) the orginal observable
+    // this.measureValues$ = this.mvs.getValues().pipe(share());
+
+    // 3.
+    // this.measureValues$ = this.mvs.getValues().pipe(shareReplay({
+    //   refCount: true,
+    //   bufferSize: 1
+    // }));
+
+    // 4. please try out:                                                        // REMOVE LINE
+    // - Subject                                                                 // REMOVE LINE
+    // - BehaviorSubject                                                         // REMOVE LINE
+    // - ReplaySubject
+    this.measureValues$ = new Subject<number>();                              // REMOVE LINE
+    this.mvs.getValues().subscribe(this.measureValues$);
+
     /**************!!**************/
 
   }

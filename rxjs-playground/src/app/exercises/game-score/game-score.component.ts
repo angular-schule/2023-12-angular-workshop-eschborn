@@ -23,6 +23,8 @@ export class GameScoreComponent {
 
     /******************************/
 
+    this.score$
+
     
     /******************************/
 
