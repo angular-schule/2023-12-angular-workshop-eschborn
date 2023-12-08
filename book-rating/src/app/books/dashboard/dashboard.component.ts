@@ -22,7 +22,7 @@ export class DashboardComponent {
   bs = inject(BookStoreService);
 
   constructor() {
-    this.bs.getAllBooks().subscribe(books => this.books = books);
+    // this.bs.getAllBooks().subscribe(books => this.books = books);
   }
 
   doRateUp(book: Book) {
