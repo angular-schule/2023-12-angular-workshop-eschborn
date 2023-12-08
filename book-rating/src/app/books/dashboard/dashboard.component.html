@@ -1,7 +1,7 @@
 <app-book-create (create)="addBook($event)" />
 
 
-@for (b of books; track b) {
+@for (b of books$ | async; track b) {
 <app-book
 
   (rateUp)="doRateUp($event)"
@@ -9,12 +9,13 @@
   [book]="b" />
 }
 
-@if (books.length === 0) {
+@if ((books$ | async)?.length === 0) {
 <div>
   Keine Bücher vorhanden
 </div>
 }
 
+<b *ngIf="booksLoading$ | async">Loading!</b>
 
 <p>
   <strong>Anzahl Bücher:</strong> {{ books.length }}
